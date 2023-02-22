@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
 import Personal from './components/Personal';
-import './styles/Personal.css';
+import './styles/App.css'
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className='box'>
+        <Header  title="Personal Information"/>
         <Personal />
         <div className='footer'>
           <div className='buttons'>
