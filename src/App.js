@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Personal from './components/Personal';
+import Education from './components/Education';
 import './styles/App.css'
 
 class App extends Component {
@@ -15,9 +16,11 @@ class App extends Component {
       <div className='box'>
         <Header  title="Personal Information"/>
         <Personal />
+        <Header title="Education" />
+        <Education />
         <div className='footer'>
           <div className='buttons'>
-            <button>Edit</button>
+            <button className='appButton'>Edit</button>
             <button> Submit</button>
           </div>
         </div>
