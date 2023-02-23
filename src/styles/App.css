@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: column;
   border: 4px solid black;
-  height: 90vh;
+  height: fit-content;
+  overflow-y: scroll;
   width: 90vw;
 }
 
 .footer {
   height: 5vh;
-  border-bottom: 4px solid black;
-  border-top: 4px solid black;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -24,5 +23,7 @@
 }
 
 .appButton {
-  width: 20%;
+  width: 30%;
+  height: 30px;
+  font-size: 20px;
 }

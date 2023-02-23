@@ -1,4 +1,4 @@
-/* Style reset */
+Style reset
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,7 +46,8 @@ table {
 /* Start of non-reset changes */
 body {
   background-color: rgb(223, 225, 225);
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   width: 100vw;
   display: flex;
   justify-content: center;
