@@ -10,6 +10,12 @@ class Education extends Component {
     }
   }
 
+  removeEducationForm = (e) => {
+    this.setState({
+      added: false
+    })
+  }
+
   onAddEducation = (e) => {
     this.setState({
       added: true
@@ -20,7 +26,7 @@ class Education extends Component {
     return (
       <div className="educationDiv">
         {this.state.added ?
-        <EduForm /> :
+        <EduForm delete={this.removeEducationForm} /> :
         null
         }
         <button onClick={this.onAddEducation} className="addEducation">Add</button>
