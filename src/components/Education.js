@@ -4,7 +4,7 @@ import EduForm from "./EduForm";
 
 class Education extends Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       added: false,
     }
@@ -16,7 +16,7 @@ class Education extends Component {
     })
   }
 
-  onAddEducation = (e) => {
+  addEducation = (e) => {
     this.setState({
       added: true
     })
@@ -29,7 +29,7 @@ class Education extends Component {
         <EduForm delete={this.removeEducationForm} /> :
         null
         }
-        <button onClick={this.onAddEducation} className="addEducation">Add</button>
+        <button onClick={this.addEducation} className="addEducation">Add</button>
       </div>
     )
   }

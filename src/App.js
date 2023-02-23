@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Personal from './components/Personal';
 import Education from './components/Education';
 import './styles/App.css'
+import Practical from './components/Practical';
 
 class App extends Component {
   constructor(props) {
@@ -18,10 +19,12 @@ class App extends Component {
         <Personal />
         <Header title="Education" />
         <Education />
+        <Header title="Practical Experience" />
+        <Practical />
         <div className='footer'>
           <div className='buttons'>
             <button className='appButton'>Edit</button>
-            <button> Submit</button>
+            <button className='appButton'> Submit</button>
           </div>
         </div>
       </div>
