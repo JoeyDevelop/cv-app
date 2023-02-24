@@ -21,7 +21,7 @@ class EduForm extends Component {
         </form>
         <div className="eduFormButtons">
           <button onClick={this.props.delete}>Delete</button>
-          <button>Submit</button>
+          {/* <button>Submit</button> */}
         </div>
       </div>
     )

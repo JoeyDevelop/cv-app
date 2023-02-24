@@ -29,7 +29,10 @@ class Education extends Component {
         <EduForm delete={this.removeEducationForm} /> :
         null
         }
+        {this.state.added ?
+        null :
         <button onClick={this.addEducation} className="addEducation">Add</button>
+        }
       </div>
     )
   }

@@ -29,7 +29,10 @@ class Practical extends Component {
         <PractForm delete={this.removePracticalForm} /> :
         null
         }
+        {this.state.added ?
+        null :
         <button onClick={this.addPractical} className="addEducation">Add</button>
+        }
       </div>
       </div>
     )
