@@ -13,11 +13,13 @@ class App extends Component {
     }
     this.personal = React.createRef();
     this.education = React.createRef();
+    this.practical = React.createRef();
   }
 
   onSubmit = (e) => {
     this.personal.current.submit();
     this.education.current.submit();
+    this.practical.current.submit();
     this.setState({
       clicked: true
     })
@@ -26,6 +28,7 @@ class App extends Component {
   onEdit = (e) => {
     this.personal.current.edit();
     this.education.current.edit();
+    this.practical.current.edit();
     this.setState({
       clicked: false
     })
@@ -39,7 +42,7 @@ class App extends Component {
         <Header title="Education" />
         <Education ref={this.education} />
         <Header title="Practical Experience" />
-        <Practical />
+        <Practical ref={this.practical} />
         <div className='footer'>
           <div className='buttons'>
           {this.state.clicked ?
