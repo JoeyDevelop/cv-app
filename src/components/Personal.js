@@ -50,6 +50,7 @@ class Personal extends Component {
   }
 
   render() {
+    const {submit, first, last, email, phone} = this.state
     return (
       <div>
         <form className='section'>
@@ -60,21 +61,21 @@ class Personal extends Component {
             <label>Phone number: </label>
           </div>
           <div className='grid1'>
-            {this.state.submit ?
-            <h1>{this.state.first}</h1> :
-            <input value={this.state.first} onChange={this.firstChange} type="text"></input>
+            {submit ?
+              <h1>{first}</h1> :
+              <input value={first} onChange={this.firstChange} type="text"></input>
             }
-            {this.state.submit ?
-            <h1>{this.state.last}</h1> :
-            <input value={this.state.last} onChange={this.lastChange} type="text"></input>
+            {submit ?
+              <h1>{last}</h1> :
+              <input value={last} onChange={this.lastChange} type="text"></input>
             }
-            {this.state.submit ?
-            <h1>{this.state.email}</h1> :
-            <input value={this.state.email} onChange={this.emailChange} type="text"></input>
+            {submit ?
+              <h1>{email}</h1> :
+              <input value={email} onChange={this.emailChange} type="text"></input>
             }
-            {this.state.submit ?
-            <h1>{this.state.phone}</h1> :
-            <input value={this.state.phone} onChange={this.phoneChange} type="text"></input>
+            {submit ?
+              <h1>{phone}</h1> :
+              <input value={phone} onChange={this.phoneChange} type="text"></input>
             }
           </div>
         </form>
