@@ -6,6 +6,9 @@ This app is my first react application.
 
 This app will allow you to enter personal information, along with education and practical work experience. It will then be able to show you a preview of your finished CV.
 
+## Functional Branch
+This branch has the exact same functionalities. the only difference between this branch and main branch is that this branch uses functional components and hooks.
+
 ## What I'm gaining experience with
 
 ### `React class components`
