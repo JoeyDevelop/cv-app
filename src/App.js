@@ -29,7 +29,7 @@ const App = () => {
       <Header title="Education" />
       <Education clicked={clicked}/>
       <Header title="Practical Experience" />
-      <Practical/>
+      <Practical clicked={clicked}/>
       <div className='footer'>
         <div className='buttons'>
           {clicked ?

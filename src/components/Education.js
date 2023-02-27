@@ -23,25 +23,15 @@ const Education = (props) => {
     setEnd('')
   };
 
-  const addEducationForm = () => {
-    setAdded(true);
-  };
+  const addEducationForm = () => { setAdded(true) };
 
-  const schoolChange = (e) => {
-    setSchool(e.target.value)
-  };
+  const schoolChange = (e) => { setSchool(e.target.value) };
 
-  const studyChange = (e) => {
-    setStudy(e.target.value)
-  };
+  const studyChange = (e) => { setStudy(e.target.value) };
 
-  const startChange = (e) => {
-    setStart(e.target.value)
-  };
+  const startChange = (e) => { setStart(e.target.value) };
 
-  const endChange = (e) => {
-    setEnd(e.target.value)
-  };
+  const endChange = (e) => { setEnd(e.target.value) };
 
   return (
     <div className="educationDiv">
