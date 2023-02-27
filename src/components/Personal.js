@@ -1,87 +1,66 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import '../styles/Personal.css'
 
-class Personal extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      submit: false,
-      first: '',
-      last: '',
-      email: '',
-      phone: '',
-    }
+const Personal = (props) => {
+  const [submit, setSubmit] = useState(props.submit);
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  
+  useEffect(() => {
+    if (submit !== props.clicked) {
+      setSubmit(!submit)
+    } else return
+
+  }, [submit, props.clicked]);
+
+  const firstChange = (e) => {
+    setFirst(e.target.value)
   }
 
-  submit = (e) => {
-    this.setState({
-      submit: true
-    })
+  const lastChange = (e) => {
+    setLast(e.target.value)
   }
 
-  edit = (e) => {
-    this.setState({
-      submit: false
-    })
+  const emailChange = (e) => {
+    setEmail(e.target.value)
   }
 
-  firstChange = (e) => {
-    this.setState({
-      first: e.target.value
-    })
+  const phoneChange = (e) => {
+    setPhone(e.target.value)
   }
 
-  lastChange = (e) => {
-    this.setState({
-      last: e.target.value
-    })
-  }
-
-  emailChange = (e) => {
-    this.setState({
-      email: e.target.value
-    })
-  }
-
-  phoneChange = (e) => {
-    this.setState({
-      phone: e.target.value
-    })
-  }
-
-  render() {
-    const {submit, first, last, email, phone} = this.state
-    return (
-      <div>
-        <form className='section'>
-          <div className='grid'>
-            <label>First name: </label>
-            <label>Last name: </label>
-            <label>Email: </label>
-            <label>Phone number: </label>
-          </div>
-          <div className='grid1'>
-            {submit ?
-              <h1>{first}</h1> :
-              <input value={first} onChange={this.firstChange} type="text"></input>
-            }
-            {submit ?
-              <h1>{last}</h1> :
-              <input value={last} onChange={this.lastChange} type="text"></input>
-            }
-            {submit ?
-              <h1>{email}</h1> :
-              <input value={email} onChange={this.emailChange} type="text"></input>
-            }
-            {submit ?
-              <h1>{phone}</h1> :
-              <input value={phone} onChange={this.phoneChange} type="text"></input>
-            }
-          </div>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <form className='section'>
+        <div className='grid'>
+          <label>First name: </label>
+          <label>Last name: </label>
+          <label>Email: </label>
+          <label>Phone number: </label>
+        </div>
+        <div className='grid1'>
+          {submit ?
+            <h1>{first}</h1> :
+            <input value={first} onChange={firstChange} type="text"></input>
+          }
+          {submit ?
+            <h1>{last}</h1> :
+            <input value={last} onChange={lastChange} type="text"></input>
+          }
+          {submit ?
+            <h1>{email}</h1> :
+            <input value={email} onChange={emailChange} type="text"></input>
+          }
+          {submit ?
+            <h1>{phone}</h1> :
+            <input value={phone} onChange={phoneChange} type="text"></input>
+          }
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default Personal

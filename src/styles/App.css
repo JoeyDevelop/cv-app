@@ -3,8 +3,9 @@
   display: flex;
   flex-direction: column;
   border: 4px solid black;
+  min-height: 90vh;
   height: fit-content;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 90vw;
 }
 
