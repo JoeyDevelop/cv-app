@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Personal from './components/Personal';
 import Education from './components/Education';
@@ -27,7 +27,7 @@ const App = () => {
       <Header  title="Personal Information"/>
       <Personal clicked={clicked}/>
       <Header title="Education" />
-      <Education/>
+      <Education clicked={clicked}/>
       <Header title="Practical Experience" />
       <Practical/>
       <div className='footer'>

@@ -11,8 +11,7 @@ const Personal = (props) => {
   useEffect(() => {
     if (submit !== props.clicked) {
       setSubmit(!submit)
-    } else return
-
+    }
   }, [submit, props.clicked]);
 
   const firstChange = (e) => {

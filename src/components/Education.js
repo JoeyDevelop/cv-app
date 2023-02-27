@@ -1,124 +1,98 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import '../styles/Education.css'
 
-class Education extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      submit: false,
-      added: false,
-      school: '',
-      study: '',
-      start: '',
-      end: '',
-    }
-  }
+const Education = (props) => {
+  const [submit, setSubmit] = useState(false)
+  const [added, setAdded] = useState(false)
+  const [school, setSchool] = useState('')
+  const [study, setStudy] = useState('')
+  const [start, setStart] = useState('')
+  const [end, setEnd] = useState('')
 
-  submit = (e) => {
-    this.setState({
-      submit: true
-    })
-  }
+  useEffect(() => {
+    if (submit !== props.clicked) {
+      setSubmit(!submit)
+    } return
+  }, [submit, props.clicked]);
 
-  edit = (e) => {
-    this.setState({
-      submit: false
-    })
-  }
+  const removeEducationForm = () => {
+    setAdded(false)
+    setSchool('')
+    setStudy('')
+    setStart('')
+    setEnd('')
+  };
 
-  removeEducationForm = (e) => {
-    this.setState({
-      added: false,
-      school: '',
-      study: '',
-      start: '',
-      end: '',
-    })
-  }
+  const addEducationForm = () => {
+    setAdded(true);
+  };
 
-  addEducation = (e) => {
-    this.setState({
-      added: true
-    })
-  }
+  const schoolChange = (e) => {
+    setSchool(e.target.value)
+  };
 
-  schoolChange = (e) => {
-    this.setState({
-      school: e.target.value
-    })
-  }
+  const studyChange = (e) => {
+    setStudy(e.target.value)
+  };
 
-  studyChange = (e) => {
-    this.setState({
-      study: e.target.value
-    })
-  }
+  const startChange = (e) => {
+    setStart(e.target.value)
+  };
 
-  startChange = (e) => {
-    this.setState({
-      start: e.target.value
-    })
-  }
+  const endChange = (e) => {
+    setEnd(e.target.value)
+  };
 
-  endChange = (e) => {
-    this.setState({
-      end: e.target.value
-    })
-  }
-  render() {
-    const {submit, added, school, study, start, end} = this.state
-    return (
-      <div className="educationDiv">
-
-        {/* Add form is state.added === true */}
-        {added ?
-          <div>
-            <form className="eduFormDiv">
-              <div className="grid">
-                <label>School Name:</label>
-                <label>Area of Study:</label>
-                <label>Start Date:</label>
-                <label>End Date:</label>
-              </div>
-              <div className="grid1">
-                {submit ? 
-                  <h1>{school}</h1> :
-                  <input value={school} onChange={this.schoolChange} type="text"></input>
-                }
-                {submit ?
-                  <h1>{study}</h1> :
-                  <input value={study} onChange={this.studyChange} type="text"></input>
-                }
-                {submit ?
-                  <h1>{start}</h1> :
-                  <input value={start} onChange={this.startChange} type="date"></input>
-                }
-                {submit ?
-                  <h1>{end}</h1> :
-                  <input value={end} onChange={this.endChange} type="date"></input>
-                }
-              </div>
-            </form>
-            <div className="eduFormButtons">
-
-              {/* Remove Form */}
+  return (
+    <div className="educationDiv">
+      {/* Add form is state.added === true */}
+      {added ?
+        <div>
+          <form className="eduFormDiv">
+            <div className="grid">
+              <label>School Name:</label>
+              <label>Area of Study:</label>
+              <label>Start Date:</label>
+              <label>End Date:</label>
+            </div>
+            <div className="grid1">
+              {submit ? 
+                <h1>{school}</h1> :
+                <input value={school} onChange={schoolChange} type="text"></input>
+              }
               {submit ?
-                null :
-                <button onClick={this.removeEducationForm}>Delete</button>
+                <h1>{study}</h1> :
+                <input value={study} onChange={studyChange} type="text"></input>
+              }
+              {submit ?
+                <h1>{start}</h1> :
+                <input value={start} onChange={startChange} type="date"></input>
+              }
+              {submit ?
+                <h1>{end}</h1> :
+                <input value={end} onChange={endChange} type="date"></input>
               }
             </div>
-          </div> :
-          null
-        }
+          </form>
+          <div className="eduFormButtons">
 
-        {/* Hide button on submit */}
-        {submit || added ?
-        null :
-        <button onClick={this.addEducation} className="addEducation">Add</button>
-        }
-      </div>
-    )
-  }
+            {/* Remove Form */}
+            {submit ?
+              null :
+              <button onClick={removeEducationForm}>Delete</button>
+            }
+          </div>
+        </div> :
+        null
+      }
+
+      {/* Hide button on submit */}
+      {submit || added ?
+      null :
+      <button onClick={addEducationForm} className="addEducation">Add</button>
+      }
+    </div>
+  )
 }
 
 export default Education
