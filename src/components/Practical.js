@@ -1,133 +1,89 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 
-class Practical extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      submit: false,
-      added: false,
-      company: '',
-      title: '',
-      responsibilities: '',
-      start: '',
-      end: '',
-    }
-  }
+const Practical = (props) => {
+  const [submit, setSubmit] = useState(false)
+  const [added, setAdded] = useState(false)
+  const [company, setCompany] = useState('')
+  const [title, setTitle] = useState('')
+  const [responsibilities, setResponsibilities] = useState('')
+  const [start, setStart] = useState('')
+  const [end, setEnd] = useState('')
 
-  submit =(e) => {
-    this.setState({
-      submit: true
-    })
-  }
+  useEffect(() => {
+    if(submit !== props.clicked) {
+      setSubmit(!submit)
+    } return
+  }, [submit, props.clicked]);
 
-  edit = (e) => {
-    this.setState({ 
-      submit: false
-    })
-  }
+  const removePracticalForm = () => {
+    setAdded(false)
+    setCompany('')
+    setTitle('')
+    setResponsibilities('')
+    setStart('')
+    setEnd('')
+  };
 
-  removePracticalForm = (e) => {
-    this.setState({
-      added: false,
-      company: '',
-      title: '',
-      responsibilities: '',
-      start: '',
-      end: '',
-    })
-  }
+  const addPracticalForm = () => { setAdded(true) };
 
-  addPractical = (e) => {
-    this.setState({
-      added: true
-    })
-  }
+  const companyChange = (e) => { setCompany(e.target.value) };
+  const titleChange = (e) => { setTitle(e.target.value) };
+  const responsibilitiesChange = (e) => { setResponsibilities(e.target.value) };
+  const startChange = (e) => { setStart(e.target.value) };
+  const endChange = (e) => { setEnd(e.target.value) };
 
-  companyChange = (e) => {
-    this.setState({
-      company: e.target.value
-    })
-  }
-
-  titleChange = (e) => {
-    this.setState({
-      title: e.target.value
-    })
-  }
-
-  responsibilitiesChange = (e) => {
-    this.setState({
-      responsibilities: e.target.value
-    })
-  }
-
-  startChange = (e) => {
-    this.setState({
-      start: e.target.value
-    })
-  }
-
-  endChange = (e) => {
-    this.setState({
-      end: e.target.value
-    })
-  }
-
-  render() {
-    const {submit, added, company, title, responsibilities, start, end } = this.state 
-    return (
+  return (
+    <div>
+      <div className="educationDiv">
+      {added ?
       <div>
-        <div className="educationDiv">
-        {this.state.added ?
-        <div>
-          <form className="eduFormDiv">
-            <div className="grid">
-              <label>Company Name:</label>
-              <label>Title of Job:</label>
-              <label>Job Responsibilities:</label>
-              <label>Start Date:</label>
-              <label>End Date:</label>
-            </div>
-            <div className="grid1">
-              {submit ?
-                <h1>{company}</h1> :
-                <input value={company} onChange={this.companyChange} type="text"></input>
-              }
-              {submit ?
-                <h1>{title}</h1> :
-                <input onChange={this.titleChange} type="text"></input>
-              }
-              {submit ?
-                <h1>{responsibilities}</h1> :
-                <textarea value={responsibilities} onChange={this.responsibilitiesChange} className="practTextArea"></textarea>
-              }
-              {submit ?
-                <h1>{start}</h1> :
-                <input value={start} onChange={this.startChange} type="date"></input>
-              }
-              {submit ?
-                <h1>{end}</h1> :
-                <input value={end} onChange={this.endChange} type="date"></input>
-              }
-            </div>
-          </form>
-          <div className="eduFormButtons">
+        <form className="eduFormDiv">
+          <div className="grid">
+            <label>Company Name:</label>
+            <label>Title of Job:</label>
+            <label>Job Responsibilities:</label>
+            <label>Start Date:</label>
+            <label>End Date:</label>
+          </div>
+          <div className="grid1">
             {submit ?
-              null :
-              <button onClick={this.removePracticalForm}>Delete</button>
+              <h1>{company}</h1> :
+              <input value={company} onChange={companyChange} type="text"></input>
+            }
+            {submit ?
+              <h1>{title}</h1> :
+              <input onChange={titleChange} type="text"></input>
+            }
+            {submit ?
+              <h1>{responsibilities}</h1> :
+              <textarea value={responsibilities} onChange={responsibilitiesChange} className="practTextArea"></textarea>
+            }
+            {submit ?
+              <h1>{start}</h1> :
+              <input value={start} onChange={startChange} type="date"></input>
+            }
+            {submit ?
+              <h1>{end}</h1> :
+              <input value={end} onChange={endChange} type="date"></input>
             }
           </div>
-        </div> :
-        null
-        }
-        {submit || added ?
-          null :
-          <button onClick={this.addPractical} className="addEducation">Add</button>
-        }
-      </div>
-      </div>
-    )
-  }
+        </form>
+        <div className="eduFormButtons">
+          {submit ?
+            null :
+            <button onClick={removePracticalForm}>Delete</button>
+          }
+        </div>
+      </div> :
+      null
+      }
+      {submit || added ?
+        null :
+        <button onClick={addPracticalForm} className="addEducation">Add</button>
+      }
+    </div>
+    </div>
+  )
 }
 
 export default Practical
